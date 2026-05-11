@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+
+    <!-- LEFT SIDE -->
+    <div class="col-md-3">
+
+        <div class="bg-dark text-white p-3 rounded shadow">
+
+            <h3 class="text-center mb-4">
+                Kurslar
+            </h3>
+
+            <div class="list-group">
+
+                {% for course in courses %}
+
+                <a
+                    href="{% url 'course_students' course.id %}"
+                    class="list-group-item list-group-item-action"
+                >
+
+                    {{ course.field }}
+
+                </a>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="col-md-9">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h2>
+                Studentlar
+            </h2>
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            {% for student in students %}
+
+            <div class="col">
+
+                <div class="card h-100 shadow border-0">
+
+                    {% if student.image %}
+
+                    <img
+                        src="{{ student.image.url }}"
+                        class="card-img-top"
+                        height="250"
+                        style="object-fit: cover;"
+                    >
+
+                    {% endif %}
+
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            {{ student.name }}
+                        </h4>
+
+                        <p class="text-muted">
+                            {{ student.course }}
+                        </p>
+
+                        <a
+                            href="{% url 'detail' student.id %}"
+                            class="btn btn-dark w-100"
+                        >
+                            Batafsil
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

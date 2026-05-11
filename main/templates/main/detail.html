@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0">
+
+        <div class="row g-0">
+
+            <div class="col-md-5">
+
+                {% if student.image %}
+                <img src="{{ student.image.url }}"
+                     class="img-fluid rounded-start w-100"
+                     style="height: 100%; object-fit: cover;"
+                     alt="{{ student.name }}">
+                {% else %}
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSueLDTO5JKcsRGrSr0ELwN7d03DPqIkxoyvA&s"
+                     class="img-fluid rounded-start w-100"
+                     alt="No image">
+                {% endif %}
+
+            </div>
+
+            <div class="col-md-7">
+
+                <div class="card-body p-4">
+
+                    <h1 class="card-title mb-3">
+                        {{ student.name }}
+                    </h1>
+
+                    <p class="card-text">
+                        <strong>ID:</strong>
+                        {{ student.id }}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Yoshi:</strong>
+                        {{ student.age }}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Email:</strong>
+                        {{ student.email }}
+                    </p>
+
+                    <p class="card-text">
+                        <strong>Haqida:</strong><br>
+                        {{ student.description }}
+                    </p>
+
+                    <a href="{% url 'home' %}"
+                       class="btn btn-dark mt-3">
+                        Ortga qaytish
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
