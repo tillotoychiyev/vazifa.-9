@@ -8,7 +8,7 @@ Home
 
 <div class="row">
 
-    <!-- LEFT SIDE -->
+
     <div class="col-md-3">
 
         <div class="bg-dark text-white p-3 rounded shadow">
@@ -22,8 +22,8 @@ Home
                 {% for course in courses %}
 
                 <a
-                    href="{% url 'course_students' course.id %}"
-                    class="list-group-item list-group-item-action"
+                        href="{% url 'course_students' course.id %}"
+                        class="list-group-item list-group-item-action"
                 >
 
                     {{ course.field }}
@@ -31,7 +31,10 @@ Home
                 </a>
 
                 {% endfor %}
-
+                <a href="{% url 'course_create' %}"
+                   class="list-group-item list-group-item-action text-center fw-bold">
+                    + Course qo'shish
+                </a>
             </div>
 
         </div>
@@ -39,7 +42,6 @@ Home
     </div>
 
 
-    <!-- RIGHT SIDE -->
     <div class="col-md-9">
 
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -51,6 +53,14 @@ Home
         </div>
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <a href="{% url 'student_create' %}"
+                   class="btn btn-dark w-100 h-100 d-flex justify-content-center align-items-center"
+                   style="min-height: 100px; font-size: 20px; border-radius: 10px; text-decoration: none;">
+                    Student qo'shish
+                    +
+                </a>
+            </div>
 
             {% for student in students %}
 
@@ -61,13 +71,21 @@ Home
                     {% if student.image %}
 
                     <img
-                        src="{{ student.image.url }}"
-                        class="card-img-top"
-                        height="250"
-                        style="object-fit: cover;"
+                            src="{{ student.image.url }}"
+                            class="card-img-top"
+                            height="250"
+                            style="object-fit: cover;"
+                    >
+                    {% else %}
+                    <img
+                            src="https://4ddig.tenorshare.com/images/photo-recovery/images-not-found.jpg"
+                            class="card-img-top"
+                            height="250"
+                            style="object-fit: cover;"
                     >
 
                     {% endif %}
+
 
                     <div class="card-body">
 
@@ -80,8 +98,8 @@ Home
                         </p>
 
                         <a
-                            href="{% url 'detail' student.id %}"
-                            class="btn btn-dark w-100"
+                                href="{% url 'detail' student.id %}"
+                                class="btn btn-dark w-100"
                         >
                             Batafsil
                         </a>
